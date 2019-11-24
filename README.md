@@ -16,6 +16,7 @@ With this other library Strings can be checked against active and terminated pos
 Version 1.0.0 of this code is available. It is unclear if another version of this code is needed.
 
 ## Dependencies
+No third party libraries.
 Please see the pom.xml for details.
 
 ## Contributions
