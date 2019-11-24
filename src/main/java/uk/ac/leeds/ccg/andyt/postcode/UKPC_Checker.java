@@ -150,7 +150,7 @@ public class UKPC_Checker {
     }
 
     /**
-     * @param postcode A full unit postcode for which the form is returned. This
+     * @param s A full unit postcode for which the form is returned. This
      * is expected to have been stripped of all white-space.
      * @param length The length of postcode.
      * @return an int which is: 0 if the length is less than 5 or both the first
@@ -158,38 +158,19 @@ public class UKPC_Checker {
      * postcodes return 2 to 7 inclusive. These are respectively of the form
      * AANN NAA; AANA NAA; ANN NAA; ANA NAA; AAN NAA; AN NAA.
      */
-    public int getUnitPostcodeType(String postcode, int length) {
+    public int getUnitPostcodeType(String s, int length) {
         if (length < 5) {
             return 0;  // Invalid
         }
-        String fpp = postcode.substring(0, length - 3);
-        String spp = postcode.substring(length - 3, length);
-        int fppt = getFirstPartPostcodeType(fpp.toCharArray());
+        String spp = s.substring(length - 3, length);
         if (isValidSecondPartUnitPostcode(spp.toCharArray())) {
-            switch (fppt) {
-                case 0: // Invalid
-                    return 1;
-                case 1:  // AANN
-                    return 2;
-                case 2: // AANA
-                    return 3;
-                case 3: // ANN
-                    return 4;
-                case 4: // ANA
-                    return 5;
-                case 5: // AAN
-                    return 6;
-                case 6: // AN
-                    return 7;
-                default:
-                    break; // Invalid
-                }
+            return getFirstPartPostcodeType(s.substring(0, length - 3).toCharArray());
         }
         return 0; // Invalid
     }
 
     /**
-     * @param postcode A postcode sector postcode for which the form is
+     * @param s A postcode sector s for which the form is
      * returned. This is expected to have been stripped of all whitespace.
      * @param length The length of postcode.
      * @return an int which is: 0 if the length is less than 4 or both the first
@@ -197,32 +178,13 @@ public class UKPC_Checker {
      * postcode sectors return 2 to 7 inclusive. These are respectively of the
      * form AANN N; AANA N; ANN N; ANA N; AAN N; AN N.
      */
-    public int getPostcodeSectorType(String postcode, int length) {
+    public int getPostcodeSectorType(String s, int length) {
         if (length < 4) {
             return 0;  // Invalid
         }
-        String fpp = postcode.substring(0, length - 1);
-        String spp = postcode.substring(length - 1, length);
-        int fppt = getFirstPartPostcodeType(fpp.toCharArray());
+        String spp = s.substring(length - 1, length);
         if (contains(spp.toCharArray()[0], digits)) {
-            switch (fppt) {
-                case 0: // Invalid
-                    return 1;
-                case 1:  // AANN N
-                    return 2;
-                case 2: // AANA N
-                    return 3;
-                case 3: // ANN N
-                    return 4;
-                case 4: // ANA N
-                    return 5;
-                case 5: // AAN N
-                    return 6;
-                case 6: // AN N
-                    return 7;
-                default:
-                    break;
-            }
+            return getFirstPartPostcodeType(s.substring(0, length - 1).toCharArray());
         }
         return 0; // Invalid
     }
@@ -251,7 +213,7 @@ public class UKPC_Checker {
      * digit: 0 if fpp is not a valid first part for a postcode; 1 if it is of
      * the form AANN; 2 if it is of the form AANA; 3 if it is of the form ANN; 4
      * if it is of the form ANA; 5 if it is of the form AAN; 6 if it is of the
-     * form AN.
+     * form AAA; 7 if it is of the form AN.
      */
     public int getFirstPartPostcodeType(char[] fpp) {
         if (fpp.length > 4 || fpp.length < 2) {
