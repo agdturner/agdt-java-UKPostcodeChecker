@@ -144,7 +144,7 @@ public class UKPC_CheckerTest {
     /**
      * Test of isValidPostcodeArea method, of class UKPC_Checker.
      */
-    @org.junit.Test
+    @Test
     public void testIsValidPostcodeArea() {
         System.out.println("isValidPostcodeArea");
         UKPC_Checker instance = new UKPC_Checker();
@@ -161,7 +161,7 @@ public class UKPC_CheckerTest {
     /**
      * Test of isValidPostcodeDistrict method, of class UKPC_Checker.
      */
-    @org.junit.Test
+    @Test
     public void testIsValidPostcodeDistrict() {
         System.out.println("isValidPostcodeDistrict");
         UKPC_Checker instance = new UKPC_Checker();
@@ -178,7 +178,7 @@ public class UKPC_CheckerTest {
     /**
      * Test of isValidPostcodeSector method, of class UKPC_Checker.
      */
-    @org.junit.Test
+    @Test
     public void testIsValidPostcodeSector() {
         System.out.println("isValidPostcodeSector");
         UKPC_Checker instance = new UKPC_Checker();
@@ -196,7 +196,7 @@ public class UKPC_CheckerTest {
      * Test of getUnitPostcodeType method, of class UKPC_Checker.
      *
      */
-    @org.junit.Test
+    @Test
     public void testGetUnitPostcodeType_String() {
         System.out.println("getUnitPostcodeType");
         UKPC_Checker instance = new UKPC_Checker();
