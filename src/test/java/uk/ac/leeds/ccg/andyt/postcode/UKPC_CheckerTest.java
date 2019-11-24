@@ -27,22 +27,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author geoagdt
  */
 public class UKPC_CheckerTest {
-    
+
     public UKPC_CheckerTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
@@ -66,23 +66,6 @@ public class UKPC_CheckerTest {
         postcode = "NW1A 1AA";
         expResult = true;
         result = instance.isValidUnitPostcode(postcode);
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getSecondPartPostcodeType method, of class UKPC_Checker.
-     */
-    @Test
-    public void testIsSecondPartPostcodeType() {
-        System.out.println("getSecondPartPostcodeType");
-        UKPC_Checker instance = new UKPC_Checker();
-        char[] spp;
-        boolean expResult;
-        boolean result;
-        // Test1
-        spp = "9JT".toCharArray();
-        expResult = true;
-        result = instance.isValidSecondPartUnitPostcode(spp);
         assertEquals(expResult, result);
     }
 
@@ -155,6 +138,122 @@ public class UKPC_CheckerTest {
         c = 'E';
         expResult = true;
         result = instance.contains(c, array);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of isValidPostcodeArea method, of class UKPC_Checker.
+     */
+    @org.junit.Test
+    public void testIsValidPostcodeArea() {
+        System.out.println("isValidPostcodeArea");
+        UKPC_Checker instance = new UKPC_Checker();
+        String s;
+        boolean expResult;
+        boolean result;
+        // Test
+        s = "LS";
+        expResult = true;
+        result = instance.isValidPostcodeArea(s);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of isValidPostcodeDistrict method, of class UKPC_Checker.
+     */
+    @org.junit.Test
+    public void testIsValidPostcodeDistrict() {
+        System.out.println("isValidPostcodeDistrict");
+        UKPC_Checker instance = new UKPC_Checker();
+        String s;
+        boolean expResult;
+        boolean result;
+        // Test
+        s = "LS2";
+        expResult = true;
+        result = instance.isValidPostcodeDistrict(s);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of isValidPostcodeSector method, of class UKPC_Checker.
+     */
+    @org.junit.Test
+    public void testIsValidPostcodeSector() {
+        System.out.println("isValidPostcodeSector");
+        UKPC_Checker instance = new UKPC_Checker();
+        String s;
+        boolean expResult;
+        boolean result;
+        // Test
+        s = "LS2 9";
+        expResult = true;
+        result = instance.isValidPostcodeSector(s);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getUnitPostcodeType method, of class UKPC_Checker.
+     *
+     */
+    @org.junit.Test
+    public void testGetUnitPostcodeType_String() {
+        System.out.println("getUnitPostcodeType");
+        UKPC_Checker instance = new UKPC_Checker();
+        String s;
+        int expResult;
+        int result;
+        // Test 1 AANN 
+        s = "LS12 9JT";
+        expResult = 1;
+        result = instance.getUnitPostcodeType(s);
+        assertEquals(expResult, result);
+        // Test 2 AANA
+        s = "AA2A 9JT";
+        expResult = 2;
+        result = instance.getUnitPostcodeType(s);
+        assertEquals(expResult, result);
+        // Test 3 ANN
+        s = "L12 9JT";
+        expResult = 3;
+        result = instance.getUnitPostcodeType(s);
+        assertEquals(expResult, result);
+        // Test 4 ANA
+        s = "A1A 9JT";
+        expResult = 4;
+        result = instance.getUnitPostcodeType(s);
+        assertEquals(expResult, result);
+        // Test 5 AAN
+        s = "LS2 9JT";
+        expResult = 5;
+        result = instance.getUnitPostcodeType(s);
+        assertEquals(expResult, result);
+        // Test 6 AAA
+        s = "AAA 9JT";
+        expResult = 6;
+        result = instance.getUnitPostcodeType(s);
+        assertEquals(expResult, result);
+        // Test 7 AN        
+        s = "L2 9JT";
+        expResult = 7;
+        result = instance.getUnitPostcodeType(s);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getSecondPartPostcodeType method, of class UKPC_Checker.
+     */
+    @Test
+    public void testIsValidSecondPartPostcodeType() {
+        System.out.println("isValidSecondPartPostcodeType");
+        UKPC_Checker instance = new UKPC_Checker();
+        char[] spp;
+        boolean expResult;
+        boolean result;
+        // Test1
+        spp = "9JT".toCharArray();
+        expResult = true;
+        result = instance.isValidSecondPartUnitPostcode(spp);
         assertEquals(expResult, result);
     }
 }
