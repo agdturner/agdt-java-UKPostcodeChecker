@@ -33,13 +33,21 @@ package uk.ac.leeds.ccg.andyt.postcode;
  */
 public class UKPC_Checker {
 
-    char[] AtoZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-    char[] AtoZ_not_CIKMOV = "ABDEFGHJKLNPQRSTUWXYZ".toCharArray();
-    char[] AtoZ_not_QVX = "ABCDEFGHIJKLMNOPRSTUWYZ".toCharArray();
-    char[] AtoZ_not_IJZ = "ABCDEFGHKLMNOPQRSTUVWXY".toCharArray();
-    char[] ABCDEFGHJKSTUW = "ABCDEFGHJKSTUW".toCharArray();
-    char[] ABEHMNPRVWXY = "ABEHMNPRVWXY".toCharArray();
-    char[] digits = "0123456789".toCharArray();
+    public static final int TYPE_AANN = 1;
+    public static final int TYPE_AANA = 2;
+    public static final int TYPE_ANN = 3;
+    public static final int TYPE_ANA = 4;
+    public static final int TYPE_AAN = 5;
+    public static final int TYPE_AAA = 6;
+    public static final int TYPE_AN = 7;
+     
+    public static final char[] AtoZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    public static final char[] AtoZ_not_CIKMOV = "ABDEFGHJKLNPQRSTUWXYZ".toCharArray();
+    public static final char[] AtoZ_not_QVX = "ABCDEFGHIJKLMNOPRSTUWYZ".toCharArray();
+    public static final char[] AtoZ_not_IJZ = "ABCDEFGHKLMNOPQRSTUVWXY".toCharArray();
+    public static final char[] ABCDEFGHJKSTUW = "ABCDEFGHJKSTUW".toCharArray();
+    public static final char[] ABEHMNPRVWXY = "ABEHMNPRVWXY".toCharArray();
+    public static final char[] digits = "0123456789".toCharArray();
 
     /**
      * Creates a new UKPC_Checker.
@@ -233,12 +241,12 @@ public class UKPC_Checker {
                     && contains(fpp[1], AtoZ_not_IJZ)
                     && contains(fpp[2], digits)
                     && contains(fpp[3], digits)) {
-                return 1; // AANN
+                return TYPE_AANN;
             } else if (contains(fpp[0], AtoZ_not_QVX)
                     && contains(fpp[1], AtoZ_not_IJZ)
                     && contains(fpp[2], digits)
                     && contains(fpp[3], ABEHMNPRVWXY)) {
-                return 2; // AANA
+                return TYPE_AANA;
             } else {
                 return 0;
             }
@@ -247,17 +255,17 @@ public class UKPC_Checker {
             if (contains(fpp[0], AtoZ_not_QVX)) {
                 if (contains(fpp[1], digits)) {
                     if (contains(fpp[2], digits)) {
-                        return 3; // ANN
+                        return TYPE_ANN;
                     } else if (contains(fpp[2], ABCDEFGHJKSTUW)) {
-                        return 4; // ANA
+                        return TYPE_ANA;
                     } else {
                         return 0;
                     }
                 } else if (contains(fpp[1], AtoZ_not_IJZ)) {
                     if (contains(fpp[2], digits)) {
-                        return 5; // AAN
+                        return TYPE_AAN;
                     } else if (contains(fpp[2], ABCDEFGHJKSTUW)) {
-                        return 6; // AAA
+                        return TYPE_AAA;
                     } else {
                         return 0;
                     }
@@ -269,7 +277,7 @@ public class UKPC_Checker {
         if (fpp.length == 2) {
             if (contains(fpp[0], AtoZ_not_QVX)) {
                 if (contains(fpp[1], digits)) {
-                    return 7; // AN
+                    return TYPE_AN;
                 }
             }
         }
