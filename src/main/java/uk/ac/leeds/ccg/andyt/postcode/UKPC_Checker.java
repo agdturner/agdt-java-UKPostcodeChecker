@@ -16,7 +16,16 @@
 package uk.ac.leeds.ccg.andyt.postcode;
 
 /**
- * For handling UK Postcodes. The general format of a postcode is given in:
+ * For checking Strings to see if they might be viable UK unit, sector, district
+ * or area postcodes and for returning the type of unit, sector and district
+ * postcodes.
+ *
+ * Postcodes take various forms comprised of alphanumeric characters. This class
+ * contains methods for efficiently check if Strings are of the right length and
+ * have the digits 0 to 9 and restricted sets of alphabetic characters in viable
+ * places.
+ * 
+ * The general format of a postcode is given in:
  * https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom
  *
  * @author Andy Turner
@@ -144,14 +153,14 @@ public class UKPC_Checker {
     public int getUnitPostcodeType(String s) {
         if (isValidUnitPostcode(s)) {
             String s0 = s.trim().replaceAll("\\s+", "");
-            return getUnitPostcodeType(s0, s0.length());        
+            return getUnitPostcodeType(s0, s0.length());
         }
         return 0;
     }
 
     /**
-     * @param s A full unit postcode for which the form is returned. This
-     * is expected to have been stripped of all white-space.
+     * @param s A full unit postcode for which the form is returned. This is
+     * expected to have been stripped of all white-space.
      * @param length The length of postcode.
      * @return an int which is: 0 if the length is less than 5 or both the first
      * and second parts of the the postcode are invalid; Completely valid
@@ -170,8 +179,8 @@ public class UKPC_Checker {
     }
 
     /**
-     * @param s A postcode sector s for which the form is
-     * returned. This is expected to have been stripped of all whitespace.
+     * @param s A postcode sector s for which the form is returned. This is
+     * expected to have been stripped of all whitespace.
      * @param length The length of postcode.
      * @return an int which is: 0 if the length is less than 4 or both the first
      * and second parts of the the postcode are invalid; Completely valid
