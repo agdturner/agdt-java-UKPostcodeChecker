@@ -51,7 +51,7 @@ public class UKPC_CheckerTest {
      * Test of isValidPostcodeForm method, of class UKPC_Checker.
      */
     @Test
-    public void testIsValidUnitPostcode() {
+    public void testIsValidPostcodeUnit() {
         System.out.println("isValidPostcodeForm");
         UKPC_Checker instance = new UKPC_Checker();
         String postcode;
@@ -60,12 +60,12 @@ public class UKPC_CheckerTest {
         // Test 1
         postcode = "LS2 9JT";
         expResult = true;
-        result = instance.isValidUnitPostcode(postcode);
+        result = instance.isValidPostcodeUnit(postcode);
         assertEquals(expResult, result);
         // Test 2
         postcode = "NW1A 1AA";
         expResult = true;
-        result = instance.isValidUnitPostcode(postcode);
+        result = instance.isValidPostcodeUnit(postcode);
         assertEquals(expResult, result);
     }
 
