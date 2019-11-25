@@ -6,7 +6,7 @@ A Java tool for checking Strings to see if they might be viable UK unit, sector,
 
 Postcodes take various forms comprised of alphanumeric characters. This tool will efficiently check if Strings are of the right length and have the digits 0 to 9 and restricted sets of alphabetic characters in viable places.
 
-The UK National Statistics Postcode Lookup (NSPL) contains current and terminated postcodes for the UK. As of 2019, it has been updated usually four times per year and been made openly avaialble for around a decade. Another Java library has been developed for processing these data:
+The UK National Statistics Postcode Lookup (NSPL) contains current and terminated postcodes for the UK. As of 2019, it has been updated usually four times per year and been made openly available for around a decade. Another Java library has been developed for processing these data:
 https://github.com/agdturner/agdt-java-generic-data-ONSPD
 
 With this other library Strings can effectively be checked against sets of active and terminated postcodes to not only check if the String is in a viable format, but that it also represents an active or terminated postcode at specific points in time. This other library makes it convenient to look up coordinates of centroids of unit postcodes and what other spatial regions that postcode is recorded as being situated in.
