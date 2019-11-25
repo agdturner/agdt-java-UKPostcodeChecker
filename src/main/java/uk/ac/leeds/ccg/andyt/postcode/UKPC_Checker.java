@@ -126,7 +126,7 @@ public class UKPC_Checker {
      * @param s The string to test if it is in a valid unit postcode form.
      * @return True iff s has a valid unit postcode form.
      */
-    public boolean isValidUnitPostcode(String s) {
+    public boolean isValidPostcodeUnit(String s) {
         if (s == null) {
             return false;
         }
@@ -151,7 +151,7 @@ public class UKPC_Checker {
      * ANN NAA; ANA NAA; AAN NAA; AN NAA.
      */
     public int getUnitPostcodeType(String s) {
-        if (isValidUnitPostcode(s)) {
+        if (isValidPostcodeUnit(s)) {
             String s0 = s.trim().replaceAll("\\s+", "");
             return getUnitPostcodeType(s0, s0.length());
         }
