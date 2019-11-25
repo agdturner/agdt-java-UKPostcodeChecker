@@ -4,19 +4,26 @@ https://github.com/agdturner/agdt-java-generic-UKPostcodeChecker/
 
 A Java tool for checking Strings to see if they might be viable UK unit, sector, district or area postcodes and for returning the type of unit, sector and district postcodes.
 
-Postcodes take various forms comprised of alphanumeric characters. This tool will efficiently check if Strings are of the right length and have the digits 0 to 9 and restricted sets of alphabetic characters in viable places.
+Postcodes are comprised of alphanumeric characters and take on one of a number of specific forms or types. This tool will efficiently check if Strings are of the right length, have the digits 0 to 9 and restricted sets of alphabetic characters in viable places, and can also return details of the form or type of a valid postcode.
 
-The UK National Statistics Postcode Lookup (NSPL) contains current and terminated postcodes for the UK. As of 2019, it has been updated usually four times per year and been made openly available for around a decade. Another Java library has been developed for processing these data:
-https://github.com/agdturner/agdt-java-generic-data-ONSPD
+There are two similar data sets that can be used for further checking UK postcodes:
+1. The UK Office for National Statistics Postcode Directory (ONSPD) data - which contains current and terminated postcodes for the UK along with a details of what other geographical areas centroids of these poscodes are within.
+2. The UK National Statistics Postcode Lookup (NSPL) data - which is similar to the ONSPD, but uses a different method for attributing which other areas a postcode is within.
 
-With this other library Strings can effectively be checked against sets of active and terminated postcodes to not only check if the String is in a viable format, but that it also represents an active or terminated postcode at specific points in time. This other library makes it convenient to look up coordinates of centroids of unit postcodes and what other spatial regions that postcode is recorded as being situated in.
+Details of the ONSPD and NSPL can be found via:
+https://www.ons.gov.uk/methodology/geography/geographicalproducts/postcodeproducts
 
-In the UK, postcodes have been used for around 50 years. They change over time and are effectively sets of delivery point addresses. These sets can for the most part be used to classify the UK into distict simple non-overlapping contiguous areas. Others have done this work and have released data demarking these unit, sector, district and area postcodes.
+Another Java library has been developed for processing these data:
+https://github.com/agdturner/agdt-java-generic-data-UKPostcode
+
+With this other library Strings can effectively be checked against sets of postcodes to not only check if the String is in a viable format, but that it is also in use at specific points in time. This other library makes it convenient to look up coordinates of centroids of unit postcodes and what other spatial regions that postcode is recorded as being situated in.
+
+In the UK, postcodes have been used for around 50 years. Postcode effectively represent sets of delivery point addresses. The definitions of postcodes can change over time relating to the challenges of delivering mail to these addresses. As the UK and the demands of deivering mail change over time, so do postcodes. New postcodes come into use, old postcodes are retired or terminated, and delivery addresses are added and removed from existing postcodes. Given the addresses, for the most part, the UK can be classified into distict simple non-overlapping contiguous regions. Others have done this work and have released data demarking these unit, sector, district and area postcodes regions.
 
 ## Usages
 1. This tool can check if Strings are in a viable UK unit, sector, district or area postcode format as described on the following Wikipedia article and it's reference documentation: https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom. This will check if each given string has the digits 0 to 9 in viable places and restricted sets of alphabetic characters in the right place.
-2. This provides a quick check which is usually faster than comparing a String against a list of expected postcodes. A more thorough check of Strings against sets of known and terminated postcodes can be done using another Java library: 
-https://github.com/agdturner/agdt-java-generic-data-ONSPD. This other library makes it convenient to look up coordinates of centroids of unit postcodes and what other spatial regions that postcode is recorded as being situated in.
+2. This provides a quick check which is usually faster than comparing a String against a list of expected postcodes. A more thorough check of Strings against sets of postcodes can be done using another Java library: 
+https://github.com/agdturner/agdt-java-generic-data-UKPostcode. This other library makes it convenient to look up coordinates of centroids of unit postcodes and what other spatial regions that postcode is recorded as being situated in.
 
 ## Code status and development roadmap
 Version 1.0.0 of this code is available.
