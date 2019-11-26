@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package uk.ac.leeds.ccg.andyt.postcode;
+package uk.ac.leeds.ccg.andyt.ukpc;
 
 /**
  * For checking Strings to see if they might be viable UK unit, sector, district
