@@ -15,6 +15,7 @@
  */
 package uk.ac.leeds.ccg.andyt.postcode;
 
+import uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
