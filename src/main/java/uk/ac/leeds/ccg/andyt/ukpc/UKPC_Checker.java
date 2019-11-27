@@ -264,10 +264,13 @@ public class UKPC_Checker {
                 } else if (contains(fpp[1], AtoZ_not_IJZ)) {
                     if (contains(fpp[2], digits)) {
                         return TYPE_AAN;
-                    } else if (contains(fpp[2], ABCDEFGHJKSTUW)) {
-                        return TYPE_AAA;
                     } else {
                         return 0;
+                    }
+                } else {
+                    if (fpp[1] == 'I' && fpp[2] == 'R') {
+                        // GIR only.
+                        return TYPE_AAA;
                     }
                 }
             } else {
