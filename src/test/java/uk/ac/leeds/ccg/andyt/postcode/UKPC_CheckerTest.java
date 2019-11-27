@@ -109,6 +109,11 @@ public class UKPC_CheckerTest {
         assertEquals(expResult, result);
         // Test 6
         fpp = "AAA".toCharArray();
+        expResult = 0;
+        result = instance.getFirstPartPostcodeType(fpp);
+        assertEquals(expResult, result);
+        // Test 6
+        fpp = "GIR".toCharArray();
         expResult = 6;
         result = instance.getFirstPartPostcodeType(fpp);
         assertEquals(expResult, result);
@@ -231,6 +236,11 @@ public class UKPC_CheckerTest {
         assertEquals(expResult, result);
         // Test 6 AAA
         s = "AAA 9JT";
+        expResult = 0;
+        result = instance.getUnitPostcodeType(s);
+        assertEquals(expResult, result);
+        // Test 6 AAA
+        s = "GIR 9JT";
         expResult = 6;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
