@@ -22,6 +22,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AANN;
+import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AANA;
+import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_ANN;
+import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AAA;
+import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AAN;
+import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_ANA;
+import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AN;
 
 /**
  *
@@ -68,6 +75,11 @@ public class UKPC_CheckerTest {
         expResult = true;
         result = instance.isValidPostcodeUnit(postcode);
         assertEquals(expResult, result);
+        // Test 3
+        postcode = "N1P 1AA";
+        expResult = true;
+        result = instance.isValidPostcodeUnit(postcode);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -84,22 +96,22 @@ public class UKPC_CheckerTest {
         // 1 AANN; 2 AANA; 3 ANN; 4 ANA; 5 AAN; 6 ANA; 7 AN.       
         // Test 1
         fpp = "LS11".toCharArray();
-        expResult = 1;
+        expResult = TYPE_AANN;
         result = instance.getFirstPartPostcodeType(fpp);
         assertEquals(expResult, result);
         // Test 2
         fpp = "NW2A".toCharArray();
-        expResult = 2;
+        expResult = TYPE_AANA;
         result = instance.getFirstPartPostcodeType(fpp);
         assertEquals(expResult, result);
         // Test 3
         fpp = "N11".toCharArray();
-        expResult = 3;
+        expResult = TYPE_ANN;
         result = instance.getFirstPartPostcodeType(fpp);
         assertEquals(expResult, result);
         // Test 4
         fpp = "N1A".toCharArray();
-        expResult = 4;
+        expResult = TYPE_ANA;
         result = instance.getFirstPartPostcodeType(fpp);
         assertEquals(expResult, result);
         // Test 5
@@ -114,14 +126,50 @@ public class UKPC_CheckerTest {
         assertEquals(expResult, result);
         // Test 6
         fpp = "GIR".toCharArray();
-        expResult = 6;
+        expResult = TYPE_AAA;
         result = instance.getFirstPartPostcodeType(fpp);
         assertEquals(expResult, result);
         // Test 7
-        fpp = "N2".toCharArray();
-        expResult = 7;
+        fpp = "NPT".toCharArray();
+        expResult = TYPE_AAA;
         result = instance.getFirstPartPostcodeType(fpp);
         assertEquals(expResult, result);
+        // Test 8
+        fpp = "CRO".toCharArray();
+        expResult = TYPE_AAA;
+        result = instance.getFirstPartPostcodeType(fpp);
+        assertEquals(expResult, result);
+        // Test 9
+        fpp = "W1M".toCharArray();
+        expResult = TYPE_ANA;
+        result = instance.getFirstPartPostcodeType(fpp);
+        assertEquals(expResult, result);
+        // Test 10
+        fpp = "W1N".toCharArray();
+        expResult = TYPE_ANA;
+        result = instance.getFirstPartPostcodeType(fpp);
+        assertEquals(expResult, result);
+        // Test 11
+        fpp = "W1R".toCharArray();
+        expResult = TYPE_ANA;
+        result = instance.getFirstPartPostcodeType(fpp);
+        assertEquals(expResult, result);
+        // Test 12
+        fpp = "W1V".toCharArray();
+        expResult = TYPE_ANA;
+        result = instance.getFirstPartPostcodeType(fpp);
+        assertEquals(expResult, result);
+        // Test 13
+        fpp = "W1X".toCharArray();
+        expResult = TYPE_ANA;
+        result = instance.getFirstPartPostcodeType(fpp);
+        assertEquals(expResult, result);
+        // Test 13
+        fpp = "N2".toCharArray();
+        expResult = TYPE_AN;
+        result = instance.getFirstPartPostcodeType(fpp);
+        assertEquals(expResult, result);
+        
     }
 
     /**
@@ -211,27 +259,27 @@ public class UKPC_CheckerTest {
         int result;
         // Test 1 AANN 
         s = "LS12 9JT";
-        expResult = 1;
+        expResult = TYPE_AANN;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 2 AANA
         s = "AA2A 9JT";
-        expResult = 2;
+        expResult = TYPE_AANA;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 3 ANN
         s = "L12 9JT";
-        expResult = 3;
+        expResult = TYPE_ANN;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 4 ANA
         s = "A1A 9JT";
-        expResult = 4;
+        expResult = TYPE_ANA;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 5 AAN
         s = "LS2 9JT";
-        expResult = 5;
+        expResult = TYPE_AAN;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 6 AAA
@@ -239,14 +287,9 @@ public class UKPC_CheckerTest {
         expResult = 0;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
-        // Test 6 AAA
-        s = "GIR 9JT";
-        expResult = 6;
-        result = instance.getUnitPostcodeType(s);
-        assertEquals(expResult, result);
         // Test 7 AN        
         s = "L2 9JT";
-        expResult = 7;
+        expResult = TYPE_AN;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
     }
