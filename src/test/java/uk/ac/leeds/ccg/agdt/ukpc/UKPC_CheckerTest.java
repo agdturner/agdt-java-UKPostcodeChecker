@@ -13,26 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package uk.ac.leeds.ccg.andyt.postcode;
+package uk.ac.leeds.ccg.agdt.ukpc;
 
-import uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker;
+import uk.ac.leeds.ccg.agdt.ukpc.UKPC_Checker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AANN;
-import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AANA;
-import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_ANN;
-import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AAA;
-import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AAN;
-import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_ANA;
-import static uk.ac.leeds.ccg.andyt.ukpc.UKPC_Checker.TYPE_AN;
+import static uk.ac.leeds.ccg.agdt.ukpc.UKPC_Checker.TYPE_AANN;
+import static uk.ac.leeds.ccg.agdt.ukpc.UKPC_Checker.TYPE_AANA;
+import static uk.ac.leeds.ccg.agdt.ukpc.UKPC_Checker.TYPE_ANN;
+import static uk.ac.leeds.ccg.agdt.ukpc.UKPC_Checker.TYPE_AAA;
+import static uk.ac.leeds.ccg.agdt.ukpc.UKPC_Checker.TYPE_AAN;
+import static uk.ac.leeds.ccg.agdt.ukpc.UKPC_Checker.TYPE_ANA;
+import static uk.ac.leeds.ccg.agdt.ukpc.UKPC_Checker.TYPE_AN;
 
 /**
- *
- * @author geoagdt
+ * Test for {@link uk.ac.leeds.ccg.agdt.ukpc.UKPC_Checker}.
+ * 
+ * @author Andy Turner
+ * @version 1.0.0
  */
 public class UKPC_CheckerTest {
 
@@ -66,17 +68,17 @@ public class UKPC_CheckerTest {
         boolean expResult;
         boolean result;
         // Test 1
-        postcode = "LS2 9JT";
+        postcode = "LS29JT";
         expResult = true;
         result = instance.isValidPostcodeUnit(postcode);
         assertEquals(expResult, result);
         // Test 2
-        postcode = "NW1A 1AA";
+        postcode = "NW1A1AA";
         expResult = true;
         result = instance.isValidPostcodeUnit(postcode);
         assertEquals(expResult, result);
         // Test 3
-        postcode = "N1P 1AA";
+        postcode = "N1P1AA";
         expResult = true;
         result = instance.isValidPostcodeUnit(postcode);
         assertEquals(expResult, result);
@@ -240,7 +242,7 @@ public class UKPC_CheckerTest {
         boolean expResult;
         boolean result;
         // Test
-        s = "LS2 9";
+        s = "LS29";
         expResult = true;
         result = instance.isValidPostcodeSector(s);
         assertEquals(expResult, result);
@@ -258,37 +260,37 @@ public class UKPC_CheckerTest {
         int expResult;
         int result;
         // Test 1 AANN 
-        s = "LS12 9JT";
+        s = "LS129JT";
         expResult = TYPE_AANN;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 2 AANA
-        s = "AA2A 9JT";
+        s = "AA2A9JT";
         expResult = TYPE_AANA;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 3 ANN
-        s = "L12 9JT";
+        s = "L129JT";
         expResult = TYPE_ANN;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 4 ANA
-        s = "A1A 9JT";
+        s = "A1A9JT";
         expResult = TYPE_ANA;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 5 AAN
-        s = "LS2 9JT";
+        s = "LS29JT";
         expResult = TYPE_AAN;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 6 AAA
-        s = "AAA 9JT";
+        s = "AAA9JT";
         expResult = 0;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
         // Test 7 AN        
-        s = "L2 9JT";
+        s = "L29JT";
         expResult = TYPE_AN;
         result = instance.getUnitPostcodeType(s);
         assertEquals(expResult, result);
