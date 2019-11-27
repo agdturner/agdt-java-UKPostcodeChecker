@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package uk.ac.leeds.ccg.andyt.ukpc;
+package uk.ac.leeds.ccg.agdt.ukpc;
 
 /**
  * For checking Strings to see if they might be viable UK unit, sector, district
@@ -58,22 +58,24 @@ public class UKPC_Checker {
     /**
      * L and LS are valid postcode areas.
      *
-     * @param s The string to test if it is in a valid postcode area form.
+     * @param s The string to test if it is in a valid postcode area form. It is
+     * assumed to have no white space and be in uppercase. If that is not the
+     * case use {@link uk.ac.leeds.ccg.agdt.generic.lang.Generic_String} or
+     * equivalent to first format s.
      * @return True iff s has a valid postcode area form.
      */
     public boolean isValidPostcodeArea(String s) {
         if (s == null) {
             return false;
         }
-        String s0 = s.trim().replaceAll("\\s+", "");
-        int length = s0.length();
+        int length = s.length();
         if (length < 2) {
             return false;
         }
         if (length > 3) {
             return false;
         }
-        char[] chars = s0.toCharArray();
+        char[] chars = s.toCharArray();
         if (contains(chars[0], AtoZ_not_QVX)) {
             if (length == 1) {
                 return true;
@@ -96,8 +98,7 @@ public class UKPC_Checker {
         if (s == null) {
             return false;
         }
-        String s0 = s.trim().replaceAll("\\s+", "");
-        int length = s0.length();
+        int length = s.length();
         if (length < 2) {
             return false;
         }
@@ -115,13 +116,12 @@ public class UKPC_Checker {
         if (s == null) {
             return false;
         }
-        String s0 = s.trim().replaceAll("\\s+", "");
-        int length = s0.length();
+        int length = s.length();
         if (length < 3) {
             return false;
         }
-        if (contains(s0.substring(length - 1, length).toCharArray()[0], digits)) {
-            char[] fpp = s0.substring(0, length - 1).toCharArray();
+        if (contains(s.substring(length - 1, length).toCharArray()[0], digits)) {
+            char[] fpp = s.substring(0, length - 1).toCharArray();
             int fppt = getFirstPartPostcodeType(fpp);
             return fppt != 0;
         }
@@ -131,25 +131,25 @@ public class UKPC_Checker {
     /**
      * LS2 9JT is a valid unit postcode.
      *
-     * @param s The string to test if it is in a valid unit postcode form.
+     * @param s The string to test if it is in a valid unit postcode form. Is
+     * assumed to be uper case and contain no whhitespace.
      * @return True iff s has a valid unit postcode form.
      */
     public boolean isValidPostcodeUnit(String s) {
         if (s == null) {
             return false;
         }
-        String s0 = s.trim().replaceAll("\\s+", "");
-        int length = s0.length();
+        int length = s.length();
         if (length < 5) {
             return false;
         }
-        if (isValidSecondPartUnitPostcode(s0.substring(length - 3, length).toCharArray())) {
-            char[] fpp = s0.substring(0, length - 3).toCharArray();
+        if (isValidSecondPartUnitPostcode(s.substring(length - 3, length).toCharArray())) {
+            char[] fpp = s.substring(0, length - 3).toCharArray();
             int fppt = getFirstPartPostcodeType(fpp);
             return fppt != 0;
         } else {
-            if (isValidSecondPartUnitPostcodeOld(s0.substring(length - 3, length).toCharArray())) {
-                char[] fpp = s0.substring(0, length - 3).toCharArray();
+            if (isValidSecondPartUnitPostcodeOld(s.substring(length - 3, length).toCharArray())) {
+                char[] fpp = s.substring(0, length - 3).toCharArray();
                 int fppt = getFirstPartPostcodeType(fpp);
                 return fppt != 0;
             }
@@ -166,8 +166,7 @@ public class UKPC_Checker {
      */
     public int getUnitPostcodeType(String s) {
         if (isValidPostcodeUnit(s)) {
-            String s0 = s.trim().replaceAll("\\s+", "");
-            return getUnitPostcodeType(s0, s0.length());
+            return getUnitPostcodeType(s, s.length());
         }
         return 0;
     }
