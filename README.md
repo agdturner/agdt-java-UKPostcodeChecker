@@ -1,6 +1,4 @@
-# UK Postcode Checker
-
-https://github.com/agdturner/agdt-java-generic-UKPostcodeChecker/
+# [UK Postcode Checker](https://github.com/agdturner/agdt-java-UKPostcodeChecker/)
 
 A Java tool for checking Strings to see if they might be viable UK unit, sector, district or area postcodes and for returning the type of unit, sector and district postcodes.
 
@@ -13,7 +11,7 @@ There are two similar data sets that can be used for further checking UK postcod
 Details of the ONSPD and NSPL can be found via:
 https://www.ons.gov.uk/methodology/geography/geographicalproducts/postcodeproducts
 
-Another Java library has been developed for processing these data:
+The developer has engineered another Java library for processing these data:
 https://github.com/agdturner/agdt-java-generic-data-UKPostcode
 
 With this other library Strings can effectively be checked against sets of postcodes to not only check if the String is in a viable format, but that it is also in use at specific points in time. This other library makes it convenient to look up coordinates of centroids of unit postcodes and what other spatial regions that postcode is recorded as being situated in.
@@ -25,20 +23,30 @@ In the UK, postcodes have been used for around 50 years. Each postcode effective
 2. This provides a quick check which is usually faster than comparing a String against a list of expected postcodes. A more thorough check of Strings against sets of postcodes can be done using another Java library: 
 https://github.com/agdturner/agdt-java-generic-data-UKPostcode. This other library makes it convenient to look up coordinates of centroids of unit postcodes and what other spatial regions that postcode is recorded as being situated in.
 
-## Code status and development roadmap
-Version 1.0.0 of this code is available.
-There are no known issues, but another version of this code might be wanted in future - especially if there are changes to the format of UK postcodes which are under the control of Royal Mail and are primarily used for delivering post.
-
-## Platform requirements
-Whilst built using Java 11, this only uses basic and long standing Java functionality so it should be possible to compile the source using very early versions of the Java Standard Development Kit and run it on very early versions of the Java Runtime Environment.
+## Latest Version
+```
+<!-- https://mvnrepository.com/artifact/io.github.agdturner/agdt-java-UKPostcodeChecker -->
+<dependency>
+    <groupId>io.github.agdturner</groupId>
+    <artifactId>agdt-java-generic-UKPostcodeChecker</artifactId>
+    <version>1.0</version>
+</dependency>
+```
+[JAR](https://repo1.maven.org/maven2/io/github/agdturner/agdt-java-UKPostcodeChecker/1.0/agdt-java-UKPostcodeChecker-1.0.jar)
 
 ## Dependencies
-The compiled library requires nothing beyond a Java Runtime Environment.
-The unit tests are written using JUnit 5. So there is a dependency on that for a fully tested build, but otherwise no other libraries are required.
-Please see the pom.xml for details.
+- Developed and tested on Java 14.
+- There are no third party dependencies.
+- There are third party dependencies for testing.
+- Please see the [POM](https://github.com/agdturner/agdt-java-generic/blob/master/pom.xml) for details.
+
+## Development Roadmap
+- There are no feature requests or issues reported as yet.
+- There is no target release date.
 
 ## Contributions
-Please raise issues and submit pull requests in the usual way. Contributions will be acknowledged.
+- Please report issues in the usual way.
+- Please liaise with the developer with regards feature requests and about contributing to development.
 
-## LICENCE
-Please see the standard Apache 2.0 open source LICENCE.
+## LICENSE
+- [APACHE LICENSE, VERSION 2.0](https://www.apache.org/licenses/LICENSE-2.0)
